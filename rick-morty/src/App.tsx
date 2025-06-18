@@ -1,7 +1,5 @@
-import { useState } from 'react'
-
 import './App.css'
-import RickMotry from './RickMotry'
+import RickMotry from '././components/RickMotry'
 
 function App() {
   //const [count, setCount] = useState(0)
