@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   Card,
   CardContent,
@@ -6,21 +5,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AllCharactersContext } from "./RickMorty";
+import type { Character } from "@/services/rickmorty.service";
+import { useRickMortyContext } from "@/context/RickMortyContext/RickMortyContext";
 
 export default function RickMortyCard() {
-  const dataCharacters = useContext(AllCharactersContext);
-
+  const { allCharacters, toggleCharacters } = useRickMortyContext();
   return (
     <div className="grid grid-cols-3">
-      {dataCharacters.map((item) => (
+      {allCharacters.map((item: Character) => (
         <Card key={item.id}>
           <CardHeader>
             <CardTitle>{item.name}</CardTitle>
             <CardDescription>{item.status}</CardDescription>
             <CardContent>
               <img src={item.image} alt="" />
-              <button>В избранное</button>
+              <button onClick={() => toggleCharacters(item.id)}>
+                В избранное
+              </button>
             </CardContent>
           </CardHeader>
         </Card>
