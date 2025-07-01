@@ -15,15 +15,15 @@ export const RickMortyProvider = ({ children }) => {
     setAllCharacters(allCharacters);
   };
 
-  const toggleCharacters = (test) => {
-    if (localStorage.getItem(test) !== null) {
-      localStorage.removeItem(test);
+  const toggleCharacters = (id: Characters) => {
+    if (localStorage.getItem(id) !== null) {
+      localStorage.removeItem(id);
     } else {
       localStorage.setItem(
-        test,
-        JSON.stringify(allCharacters.filter((item) => item.id == test))
+        id,
+        JSON.stringify(allCharacters.filter((item) => item.id == id))
       );
-      setFavoriteCharacters(allCharacters.filter((item) => item.id == test));
+      setFavoriteCharacters(allCharacters.filter((item) => item.id == id));
     }
   };
 
